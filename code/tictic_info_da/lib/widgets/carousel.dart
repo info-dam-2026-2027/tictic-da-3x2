@@ -22,59 +22,62 @@ class _CarouselState extends State<Carousel> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 60, // À faire
-          child: PageView.builder(
-            scrollDirection: Axis.horizontal,
-            controller: controller,
-            itemCount: _items.length,
-            itemBuilder: (context, i) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0), // À faire
-                child: Center(
-                  child: Text(
-                    _items[i],
-                    style: kCarouselTextStyle,
-                  ),
-                ),
-              );
-            },
-            onPageChanged: (i) {
-              setState(() {
-                _currentIndex = i;
-              });
-            },
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0), // À faire
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              for (int i = 0; i < _items.length; i++)
-                GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: () {
-                    controller.animateToPage(
-                      i,
-                      duration: Duration(seconds: 1),
-                      curve: Curves.easeInOut,
-                    );
-                  },
-                  child: Container(
-                    height: kLineHeight,
-                    width: (MediaQuery.of(context).size.width / _items.length) - 48, // À faire
-                    decoration: BoxDecoration(
-                      color: _currentIndex == i ? kDarkGreen : kWhite,
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 60, // À faire
+            child: PageView.builder(
+              scrollDirection: Axis.horizontal,
+              controller: controller,
+              itemCount: _items.length,
+              itemBuilder: (context, i) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0), // À faire
+                  child: Center(
+                    child: Text(
+                      _items[i],
+                      style: kCarouselTextStyle,
                     ),
                   ),
-                ),
-            ],
+                );
+              },
+              onPageChanged: (i) {
+                setState(() {
+                  _currentIndex = i;
+                });
+              },
+            ),
           ),
-        ),
-      ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0), // À faire
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                for (int i = 0; i < _items.length; i++)
+                  GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      controller.animateToPage(
+                        i,
+                        duration: Duration(seconds: 1),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                    child: Container(
+                      height: kLineHeight,
+                      width: (MediaQuery.of(context).size.width / _items.length) - 48, // À faire
+                      decoration: BoxDecoration(
+                        color: _currentIndex == i ? kDarkGreen : kWhite,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
