@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tictic_info_da/styles/colors.dart';
+import 'package:tictic_info_da/styles/others.dart';
 import 'package:tictic_info_da/styles/sizes.dart';
 import 'package:tictic_info_da/styles/texts.dart';
 
@@ -23,18 +24,18 @@ class _CarouselState extends State<Carousel> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(kPaddingHorizontal),
       child: Column(
         children: [
           SizedBox(
-            height: 60, // À faire
+            height: kCarouselHeight,
             child: PageView.builder(
               scrollDirection: Axis.horizontal,
               controller: controller,
               itemCount: _items.length,
               itemBuilder: (context, i) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0), // À faire
+                  padding: const EdgeInsets.symmetric(horizontal: kPaddingHorizontal),
                   child: Center(
                     child: Text(
                       _items[i],
@@ -51,7 +52,7 @@ class _CarouselState extends State<Carousel> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0), // À faire
+            padding: const EdgeInsets.symmetric(horizontal: kPaddingHorizontalL),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -61,13 +62,13 @@ class _CarouselState extends State<Carousel> {
                     onTap: () {
                       controller.animateToPage(
                         i,
-                        duration: Duration(seconds: 1),
+                        duration: Duration(seconds: kDurationCarousel),
                         curve: Curves.easeInOut,
                       );
                     },
                     child: Container(
                       height: kLineHeight,
-                      width: (MediaQuery.of(context).size.width / _items.length) - 48, // À faire
+                      width: (MediaQuery.of(context).size.width / _items.length) - (kPaddingHorizontalL * 2),
                       decoration: BoxDecoration(
                         color: _currentIndex == i ? kDarkGreen : kWhite,
                       ),

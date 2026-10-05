@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tictic_info_da/styles/sizes.dart';
 import 'package:tictic_info_da/styles/texts.dart';
 
 class CustomBtn extends StatelessWidget {
@@ -22,7 +23,7 @@ class CustomBtn extends StatelessWidget {
       child: Container(
         color: color,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0), // magic number
+          padding: const EdgeInsets.symmetric(horizontal: (kPaddingHorizontalS * 1.5), vertical: kPaddingHorizontalS), // magic number
           child: Text(text, style: isDark ? kWhiteBtnTextStyle : kDarkBtnTextStyle,),
         ),
       ),
