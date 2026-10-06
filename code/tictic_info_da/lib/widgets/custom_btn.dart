@@ -21,7 +21,10 @@ class CustomBtn extends StatelessWidget {
     return GestureDetector(
       onTap: action,
       child: Container(
-        color: color,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(4),
+          color: color,
+        ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: (kPaddingHorizontalS * 1.5), vertical: kPaddingHorizontalS), // magic number
           child: Text(text, style: isDark ? kWhiteBtnTextStyle : kDarkBtnTextStyle,),

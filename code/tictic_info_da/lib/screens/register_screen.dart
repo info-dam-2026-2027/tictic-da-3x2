@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tictic_info_da/widgets/form_register.dart';
 import 'package:tictic_info_da/widgets/logo_welcome.dart';
 import 'package:tictic_info_da/widgets/w_back_button.dart';
 
@@ -17,11 +18,14 @@ class RegisterScreen extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: Column(
-          children: [
-            WBackButton(),
-            LogoWelcome(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              WBackButton(),
+              LogoWelcome(),
+              FormRegister(),
+            ],
+          ),
         ),
       ),
     );
